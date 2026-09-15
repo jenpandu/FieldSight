@@ -1,0 +1,43 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg15
+    container_name: fieldsight-postgres
+    environment:
+      POSTGRES_PASSWORD: fieldsight_dev
+      POSTGRES_USER: fieldsight
+      POSTGRES_DB: fieldsight
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U fieldsight -d fieldsight"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  fieldsight-cli:
+    build:
+      context: .
+      dockerfile: Dockerfile.cli
+    container_name: fieldsight-cli
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      FIELDSIGHT_DB_HOST: postgres
+      FIELDSIGHT_DB_PORT: 5432
+      FIELDSIGHT_DB_USER: fieldsight
+      FIELDSIGHT_DB_PASSWORD: fieldsight_dev
+      FIELDSIGHT_DB_NAME: fieldsight
+      AWS_REGION: us-east-1
+    volumes:
+      - .:/app
+      - ./packets:/app/packets
+      - ./corpus:/app/corpus
+    command: tail -f /dev/null
+
+volumes:
+  postgres_data:
