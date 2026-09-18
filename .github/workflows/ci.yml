@@ -24,8 +24,6 @@ jobs:
         run: pip install ruff
 
       - name: Run ruff
-        run: ruff check .
-      - name: Run ruff
         run: ruff check . --exclude fieldsight/corpus/fetch_corpus.py
 
   test:
