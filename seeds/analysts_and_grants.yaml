@@ -1,0 +1,8 @@
+# FILE: seeds/analysts_and_grants.yaml
+#
+# PURPOSE
+# Seed analysts, establishments and grants.
+#
+# REQUIREMENT REFS: §8
+# OWNER LANE: A - data (repository, seeds, ingestion, retrieval)
+# TARGET SPRINT: 1
