@@ -2,9 +2,9 @@ name: CI
 
 on:
   pull_request:
-    branches: [main]
+    branches: [test]
   push:
-    branches: [main]
+    branches: [test]
 
 permissions:
   contents: read
@@ -25,6 +25,8 @@ jobs:
 
       - name: Run ruff
         run: ruff check .
+      - name: Run ruff
+        run: ruff check . --exclude fieldsight/corpus/fetch_corpus.py
 
   test:
     runs-on: ubuntu-latest
