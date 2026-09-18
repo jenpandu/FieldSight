@@ -3,7 +3,7 @@ name: Deploy to ECS
 # name the event you want this to run on
 on: 
   push:
-    branches: [main]
+    branches: [test]
 
   # allows manual start of action
   workflow_dispatch: 
