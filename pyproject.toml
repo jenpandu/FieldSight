@@ -1,0 +1,31 @@
+[project]
+name = "fieldsight"
+version = "0.1.0"
+description = "Multi-agent that reads OSHA incident packets, grounds findings in regulatory text, and drafts a cited dossier for human review."
+requires-python = ">=3.11"
+authors = [{name = "G3-FieldSight Team"}]
+dependencies = [
+    "boto3==1.43.86",
+    "botocore==1.43.86",
+    "pydantic==2.13.5",
+    "pydantic-settings==2.7.1",
+    "python-dotenv==1.0.1",
+    "amazon-textract-response-parser==1.0.3",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==7.4.3",
+    "pytest-asyncio>=0.23",
+]
+
+
+[project.scripts]
+fieldsight = "fieldsight.cli.main:cli"
+
+[tool.setuptools.packages.find]
+include = ["fieldsight*"]
+
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
