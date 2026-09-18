@@ -1,0 +1,15 @@
+# FILE: seeds/historical_incidents.yaml
+#
+# PURPOSE
+# Seed incident records (write as YAML list). See seeds/README.md for coverage
+# requirements.
+#
+# REQUIREMENT REFS: §8
+# OWNER LANE: A - data (repository, seeds, ingestion, retrieval)
+# TARGET SPRINT: 1
+#
+# WHAT GOES HERE
+#   - Per record: id, establishment_id, date, normalized fields, closed_outcome,
+#     deciding_rule_id, narrative, boundary_note (which side of which boundary).
+#   - Include at least a couple of energized-equipment incidents so find_similar_incidents
+#     has precedent for P2.

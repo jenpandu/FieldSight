@@ -1,0 +1,18 @@
+# FILE: evals/golden/_TEMPLATE.yaml
+#
+# PURPOSE
+# Template every golden case copies. Validated by the GoldenCase Pydantic model; a
+# malformed case fails CI.
+#
+# REQUIREMENT REFS: §14 What a golden case is on disk
+# OWNER LANE: All lanes
+# TARGET SPRINT: 1
+#
+# WHAT GOES HERE
+#   - id, category, why (one line), incident_id (if applicable).
+#   - turns: list of {command, query} — single-turn cases have one entry.
+#   - expected: outcome, required_sources (doc_id + section_path).
+#   - Refusal cases: expected refusal reason + must_not_contain phrase.
+#   - Threshold cases: boundary, value, side, expected rule outcome, pair_id.
+#   - Multi-turn cases: assert the follow-up reaches the same rules-engine invocation the
+#     first turn recorded.
